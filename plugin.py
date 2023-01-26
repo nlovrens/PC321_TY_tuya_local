@@ -126,10 +126,10 @@ class BasePlugin:
 		last_powerC = 0
 		last_temp = 0
 		last_freq = 0
-		energy = ""
-		energyA = ""
-		energyB = ""
-		energyC = ""
+		energy = {'131': ''}
+		energyA = {'106': ''}
+		energyB = {'116': ''}
+		energyC = {'126': ''}
 		Domoticz.Status("PC321-TY plugin started")
 		
 		if Parameters["Mode6"] != "0":
