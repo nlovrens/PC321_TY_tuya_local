@@ -125,10 +125,10 @@ class BasePlugin:
 		last_powerC = 0
 		last_temp = 0
 		last_freq = 0
-		energy = {'131': ''}
-		energyA = {'106': ''}
-		energyB = {'116': ''}
-		energyC = {'126': ''}
+		energy = ''
+		energyA = ''
+		energyB = ''
+		energyC = ''
 		Domoticz.Status("PC321-TY plugin started")
 		
 		if Parameters["Mode6"] != "0":
@@ -288,7 +288,6 @@ def get_key():
 
 
 def key_mgmt(dic):
-	dic = dic.get('dps','')
 	global currA, currB, currC, curr
 	global last_currA, last_currB, last_currC, last_curr
 	global powerA, powerB, powerC, power
@@ -299,74 +298,76 @@ def key_mgmt(dic):
 	global temp, last_temp
 	global freq, last_freq
 	
-	if dic.get('101') is not None:
-		voltageA = dic.get('101', '0')
-		voltA = float(voltageA) / 10
-		voltA = round(voltA, 0)
-	if dic.get('102') is not None:
-		currentA = dic.get('102', '0')
-		currA = float(currentA) / 1000
-		currA = round(currA, 1)
-	if dic.get('103') is not None:
-		activepowerA = dic.get('103', '0')
-		powerA = float(activepowerA)
-	if dic.get('104') is not None:
-		powerfactorA = dic.get('104', '0')
-	if dic.get('106') is not None:
-		energyAstr = dic.get('106', '0')
-		energyA = float(energyAstr) * 10
-	if dic.get('111') is not None:
-		voltageB = dic.get('111', '0')
-		voltB = float(voltageB) / 10
-		voltB = round(voltB, 0)
-	if dic.get('112') is not None:
-		currentB = dic.get('112', '0')
-		currB = float(currentB) / 1000
-		currB = round(currB, 1)
-	if dic.get('113') is not None:
-		activepowerB = dic.get('113', '0')
-		powerB = float(activepowerB)
-	if dic.get('114') is not None:
-		powerfactorB = dic.get('114', '0')
-	if dic.get('116') is not None:
-		energyBstr = dic.get('116', '0')
-		energyB = float(energyBstr) * 10
-	if dic.get('121') is not None:
-		voltageC = dic.get('121', '0')
-		voltC = float(voltageC) / 10
-		voltC = round(voltC, 0)	
-	if dic.get('122') is not None:
-		currentC = dic.get('122', '0')
-		currC = float(currentC) / 1000
-		currC = round(currC, 1)
-	if dic.get('123') is not None:
-		activepowerC = dic.get('123', '0')
-		powerC = float(activepowerC)
-	if dic.get('124') is not None:
-		powerfactorC = dic.get('124', '0')
-	if dic.get('126') is not None:
-		energyCstr = dic.get('126', '0')
-		energyC = float(energyCstr) * 10
-	if dic.get('131') is not None:
-		energystr = dic.get('131', '0')
-		energy = float(energystr) * 10
-	if dic.get('132') is not None:	
-		current = dic.get('132', '0')
-		curr = float(current) / 1000
-		curr = round(curr, 1)
-	if dic.get('133') is not None:	
-		powerstr = dic.get('133', '0')
-		power = float(powerstr)
-	if dic.get('135') is not None:	
-		frequency = dic.get('135', '0')
-		freq = float(frequency)
-	if dic.get('136') is not None:	
-		temperature = dic.get('136', '0')
-		temp = float(temperature) / 10
-	if dic.get('137') is not None:	
-		status = dic.get('137', '0')
-	if dic.get('138') is not None:	
-		voltage_phase_seq = dic.get('138', '0')
+	if type(dic) is dict:
+		dic = dic.get('dps','')
+		if dic.get('101') is not None:
+			voltageA = dic.get('101', '0')
+			voltA = float(voltageA) / 10
+			voltA = round(voltA, 0)
+		if dic.get('102') is not None:
+			currentA = dic.get('102', '0')
+			currA = float(currentA) / 1000
+			currA = round(currA, 1)
+		if dic.get('103') is not None:
+			activepowerA = dic.get('103', '0')
+			powerA = float(activepowerA)
+		if dic.get('104') is not None:
+			powerfactorA = dic.get('104', '0')
+		if dic.get('106') is not None:
+			energyAstr = dic.get('106', '0')
+			energyA = float(energyAstr) * 10
+		if dic.get('111') is not None:
+			voltageB = dic.get('111', '0')
+			voltB = float(voltageB) / 10
+			voltB = round(voltB, 0)
+		if dic.get('112') is not None:
+			currentB = dic.get('112', '0')
+			currB = float(currentB) / 1000
+			currB = round(currB, 1)
+		if dic.get('113') is not None:
+			activepowerB = dic.get('113', '0')
+			powerB = float(activepowerB)
+		if dic.get('114') is not None:
+			powerfactorB = dic.get('114', '0')
+		if dic.get('116') is not None:
+			energyBstr = dic.get('116', '0')
+			energyB = float(energyBstr) * 10
+		if dic.get('121') is not None:
+			voltageC = dic.get('121', '0')
+			voltC = float(voltageC) / 10
+			voltC = round(voltC, 0)	
+		if dic.get('122') is not None:
+			currentC = dic.get('122', '0')
+			currC = float(currentC) / 1000
+			currC = round(currC, 1)
+		if dic.get('123') is not None:
+			activepowerC = dic.get('123', '0')
+			powerC = float(activepowerC)
+		if dic.get('124') is not None:
+			powerfactorC = dic.get('124', '0')
+		if dic.get('126') is not None:
+			energyCstr = dic.get('126', '0')
+			energyC = float(energyCstr) * 10
+		if dic.get('131') is not None:
+			energystr = dic.get('131', '0')
+			energy = float(energystr) * 10
+		if dic.get('132') is not None:	
+			current = dic.get('132', '0')
+			curr = float(current) / 1000
+			curr = round(curr, 1)
+		if dic.get('133') is not None:	
+			powerstr = dic.get('133', '0')
+			power = float(powerstr)
+		if dic.get('135') is not None:	
+			frequency = dic.get('135', '0')
+			freq = float(frequency)
+		if dic.get('136') is not None:	
+			temperature = dic.get('136', '0')
+			temp = float(temperature) / 10
+		if dic.get('137') is not None:	
+			status = dic.get('137', '0')
+		if dic.get('138') is not None:	
+			voltage_phase_seq = dic.get('138', '0')
 		
 	if voltA != last_voltA:
 		UpdateDevice("voltageL1", 4, str(voltA))
