@@ -15,6 +15,10 @@
   - Go to Domoticz Hardware Setup and add new `PC321-TY Plugin Tuya(local)` hardware
   - Device IP can be obtained from your local router/modem DHCP lease
   
+  ### Update
+  - Go in 'plugins/PC321_TY_tuya_local' directory
+  - Run cmd 'git pull'
+  
   ### How it works
   - On startup, plugin will connect to Tuya Cloud to obtain local device Key, which is needed to access the device on LAN.
   - After that, plugin establishes persistent connection to power clamp on LAN and power clamp pushes updated data as it changes.
