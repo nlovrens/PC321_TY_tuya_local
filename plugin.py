@@ -369,6 +369,7 @@ def key_mgmt(dic):
 		if dic.get('138') is not None:	
 			voltage_phase_seq = dic.get('138', '0')
 		
+		
 	if voltA != last_voltA:
 		UpdateDevice("voltageL1", 4, str(voltA))
 		last_voltA = voltA
