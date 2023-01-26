@@ -16,7 +16,7 @@
   - Device IP can be obtained from your local router/modem DHCP lease
   
   ### Update
-  - Go in 'plugins/PC321_TY_tuya_local' directory
+  - Go in `plugins/PC321_TY_tuya_local` directory
   - Run cmd `git pull`
   
   ### How it works
