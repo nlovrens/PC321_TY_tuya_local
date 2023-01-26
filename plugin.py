@@ -3,7 +3,7 @@
 # Author: nlovrens
 #
 """
-<plugin key="PC321_TY_tuya_local" name="PC321-TY Plugin Tuya(local)" author="nlovrens" version="1.0.0" wikilink="http://www.domoticz.com/wiki/plugins/plugin.html" externallink="https://www.google.com/">
+<plugin key="PC321_TY_tuya_local" name="PC321-TY Plugin Tuya(local)" author="nlovrens" version="1.0.0" externallink="https://github.com/nlovrens/PC321_TY_tuya_local/">
 	<description>
 		<h2>PC321-TY Plugin Tuya(local)</h2><br/>
 		
