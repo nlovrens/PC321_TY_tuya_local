@@ -17,7 +17,7 @@
   
   ### Update
   - Go in 'plugins/PC321_TY_tuya_local' directory
-  - Run cmd 'git pull'
+  - Run cmd `git pull`
   
   ### How it works
   - On startup, plugin will connect to Tuya Cloud to obtain local device Key, which is needed to access the device on LAN.
