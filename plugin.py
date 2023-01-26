@@ -3,7 +3,7 @@
 # Author: nlovrens
 #
 """
-<plugin key="PC321_TY_tuya_local" name="PC321-TY Plugin Tuya(local)" author="nlovrens" version="1.0.0" externallink="https://github.com/nlovrens/PC321_TY_tuya_local/">
+<plugin key="PC321_TY_tuya_local" name="PC321-TY Plugin Tuya(local)" author="nlovrens" version="1.0.0" wikilink="http://www.domoticz.com/wiki/plugins/plugin.html" externallink="https://www.google.com/">
 	<description>
 		<h2>PC321-TY Plugin Tuya(local)</h2><br/>
 		
@@ -112,6 +112,7 @@ class BasePlugin:
 		global last_freq
 		global isConnected
 		global localkey
+		global energyA, energyB, energyC, energy
 		last_currA = 0
 		last_currB = 0
 		last_currC = 0
@@ -125,6 +126,10 @@ class BasePlugin:
 		last_powerC = 0
 		last_temp = 0
 		last_freq = 0
+		energy = ""
+		energyA = ""
+		energyB = ""
+		energyC = ""
 		Domoticz.Status("PC321-TY plugin started")
 		
 		if Parameters["Mode6"] != "0":
