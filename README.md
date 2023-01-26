@@ -12,6 +12,7 @@
   ## Configuration
   - You will need to register and add a device to Tuya IoT Cloud [https://iot.tuya.com/]
   - After adding your device to Tuya Cloud, you can obtain access ID, access Secret and device ID.
+  - Go to Domoticz Hardware Setup and add new `PC321-TY Plugin Tuya(local)` hardware
   - Device IP can be obtained from your local router/modem DHCP lease
   
   ### How it works
