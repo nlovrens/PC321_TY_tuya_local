@@ -97,7 +97,6 @@ class BasePlugin:
 					Domoticz.Debug(" > Send Tuya Heartbeat Ping < ")
 					payload = tuya.generate_payload(tinytuya.HEART_BEAT)
 					tuya.send(payload)
-					#self.messageQueue.task_done()
 		except Exception as err:
 			Domoticz.Error("handleMessage: "+str(err))
 			
