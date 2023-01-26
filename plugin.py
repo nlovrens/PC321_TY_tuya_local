@@ -311,8 +311,6 @@ def key_mgmt(dic):
 	if dic.get('106') is not None:
 		energyAstr = dic.get('106', '0')
 		energyA = float(energyAstr) * 10
-	else:
-		energyA = 0
 	if dic.get('111') is not None:
 		voltageB = dic.get('111', '0')
 		voltB = float(voltageB) / 10
@@ -329,8 +327,6 @@ def key_mgmt(dic):
 	if dic.get('116') is not None:
 		energyBstr = dic.get('116', '0')
 		energyB = float(energyBstr) * 10
-	else:
-		energyB = 0
 	if dic.get('121') is not None:
 		voltageC = dic.get('121', '0')
 		voltC = float(voltageC) / 10
@@ -347,13 +343,9 @@ def key_mgmt(dic):
 	if dic.get('126') is not None:
 		energyCstr = dic.get('126', '0')
 		energyC = float(energyCstr) * 10
-	else:
-		energyC = 0
 	if dic.get('131') is not None:
 		energystr = dic.get('131', '0')
 		energy = float(energystr) * 10
-	else:
-		energy = 0
 	if dic.get('132') is not None:	
 		current = dic.get('132', '0')
 		curr = float(current) / 1000
