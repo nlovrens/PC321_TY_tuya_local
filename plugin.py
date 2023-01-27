@@ -298,7 +298,7 @@ def key_mgmt(dic):
 	global temp, last_temp
 	global freq, last_freq
 	
-	if type(dic) is dict:
+	try:
 		dic = dic.get('dps','')
 		if dic.get('101') is not None:
 			voltageA = dic.get('101', '0')
