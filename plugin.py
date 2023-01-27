@@ -368,7 +368,8 @@ def key_mgmt(dic):
 			status = dic.get('137', '0')
 		if dic.get('138') is not None:	
 			voltage_phase_seq = dic.get('138', '0')
-		
+	except Exception as err:
+			Domoticz.Error("Message error: "+ str(dic))
 		
 	if voltA != last_voltA:
 		UpdateDevice("voltageL1", 4, str(voltA))
