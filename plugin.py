@@ -436,12 +436,10 @@ def createDevice(ID, Unit):
 
 def UpdateDevice(ID, Unit, sValue):
 	# Make sure that the Domoticz device still exists (they can be deleted) before updating it
-	nValue = 0
-	TimedOut = 0
-	if (Unit in Devices):
-		if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
-			Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
-			Domoticz.Debug("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
+	if (ID in Devices):
+		Devices[ID].Unit[Unit].nValue = 0
+		Devices[ID].Unit[Unit].sValue = sValue
+		Devices[ID].Unit[Unit].Update(Log=True)
 	return
 
 # Generic helper functions
