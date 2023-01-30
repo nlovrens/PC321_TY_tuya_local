@@ -457,7 +457,7 @@ def UpdateDevice(ID, Unit, sValue):
 	if (Unit in Devices):
 		if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
 			Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
-			Domoticz.Log("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
+			Domoticz.Debug("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
 	return
 
 # Generic helper functions
