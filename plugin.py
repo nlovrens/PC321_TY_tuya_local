@@ -63,7 +63,8 @@
 	</params>
 </plugin>
 """
-import DomoticzEx as Domoticz
+#import DomoticzEx as Domoticz
+import Domoticz
 import tinytuya
 import time
 import threading
@@ -135,30 +136,45 @@ class BasePlugin:
 			Domoticz.Debugging(int(Parameters["Mode6"]))
 			#DumpConfigToLog()
 		
-		if createDevice('current', 1):
-			Domoticz.Unit(Name='Current 3 Phase', DeviceID='current', Unit=1, Type=89, Subtype=1, Used=1).Create()
-		if createDevice('currentAll', 2):
-			Domoticz.Unit(Name='Total Current', DeviceID='currentAll', Unit=2, Type=243, Subtype=23, Used=1).Create()
-		if createDevice('powerAll', 3):
-			Domoticz.Unit(Name='Total Power', DeviceID='powerAll', Unit=3, Type=243, Subtype=29, Options={"EnergyMeterMode" : "1"}, Used=1).Create()
-		if createDevice('voltageL1', 4):
-			Domoticz.Unit(Name='Voltage L1', DeviceID='voltageL1', Unit=4, Type=243, Subtype=8, Used=1).Create()
-		if createDevice('voltageL2', 5):
-			Domoticz.Unit(Name='Voltage L2', DeviceID='voltageL2', Unit=5, Type=243, Subtype=8, Used=1).Create()
-		if createDevice('voltageL3', 6):
-			Domoticz.Unit(Name='Voltage L3', DeviceID='voltageL3', Unit=6, Type=243, Subtype=8, Used=1).Create()
-		if createDevice('powerL1', 7):
-			Domoticz.Unit(Name='Power L1', DeviceID='powerL1', Unit=7, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
-		if createDevice('powerL2', 8):
-			Domoticz.Unit(Name='Power L2', DeviceID='powerL2', Unit=8, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
-		if createDevice('powerL3', 9):
-			Domoticz.Unit(Name='Power L3', DeviceID='powerL3', Unit=9, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
-		if createDevice('temp', 10):
-			Domoticz.Unit(Name='Power Clamp Temp', DeviceID='temp', Unit=10, Type=80, Subtype=5, Used=1).Create()	
-		if createDevice('freq', 11):
+#		if createDevice('current', 1):
+#			Domoticz.Unit(Name='Current 3 Phase', DeviceID='current', Unit=1, Type=89, Subtype=1, Used=1).Create()
+#		if createDevice('currentAll', 2):
+#			Domoticz.Unit(Name='Total Current', DeviceID='currentAll', Unit=2, Type=243, Subtype=23, Used=1).Create()
+#		if createDevice('powerAll', 3):
+#			Domoticz.Unit(Name='Total Power', DeviceID='powerAll', Unit=3, Type=243, Subtype=29, Options={"EnergyMeterMode" : "1"}, Used=1).Create()
+#		if createDevice('voltageL1', 4):
+#			Domoticz.Unit(Name='Voltage L1', DeviceID='voltageL1', Unit=4, Type=243, Subtype=8, Used=1).Create()
+#		if createDevice('voltageL2', 5):
+#			Domoticz.Unit(Name='Voltage L2', DeviceID='voltageL2', Unit=5, Type=243, Subtype=8, Used=1).Create()
+#		if createDevice('voltageL3', 6):
+#			Domoticz.Unit(Name='Voltage L3', DeviceID='voltageL3', Unit=6, Type=243, Subtype=8, Used=1).Create()
+#		if createDevice('powerL1', 7):
+#			Domoticz.Unit(Name='Power L1', DeviceID='powerL1', Unit=7, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+#		if createDevice('powerL2', 8):
+#			Domoticz.Unit(Name='Power L2', DeviceID='powerL2', Unit=8, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+#		if createDevice('powerL3', 9):
+#			Domoticz.Unit(Name='Power L3', DeviceID='powerL3', Unit=9, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+#		if createDevice('temp', 10):
+#			Domoticz.Unit(Name='Power Clamp Temp', DeviceID='temp', Unit=10, Type=80, Subtype=5, Used=1).Create()	
+#		if createDevice('freq', 11):
+#			options = {}
+#			options['Custom'] = '1;Hz'
+#			Domoticz.Unit(Name='Frequency', DeviceID='freq', Unit=11, Type=243, Subtype=31, Options=options, Used=1).Create()
+			
+		if (len(Devices) == 0):
+			Domoticz.Device(Name='Current 3 Phase', DeviceID='current', Unit=1, Type=89, Subtype=1, Used=1).Create()
+			Domoticz.Device(Name='Total Current', DeviceID='currentAll', Unit=2, Type=243, Subtype=23, Used=1).Create()
+			Domoticz.Device(Name='Total Power', DeviceID='powerAll', Unit=3, Type=243, Subtype=29, Options={"EnergyMeterMode" : "1"}, Used=1).Create()
+			Domoticz.Device(Name='Voltage L1', DeviceID='voltageL1', Unit=4, Type=243, Subtype=8, Used=1).Create()
+			Domoticz.Device(Name='Voltage L2', DeviceID='voltageL2', Unit=5, Type=243, Subtype=8, Used=1).Create()
+			Domoticz.Device(Name='Voltage L3', DeviceID='voltageL3', Unit=6, Type=243, Subtype=8, Used=1).Create()
+			Domoticz.Device(Name='Power L1', DeviceID='powerL1', Unit=7, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+			Domoticz.Device(Name='Power L2', DeviceID='powerL2', Unit=8, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+			Domoticz.Device(Name='Power L3', DeviceID='powerL3', Unit=9, Type=243, Subtype=29, Options={"EnergyMeterMode" : "0"}, Used=1).Create()
+			Domoticz.Device(Name='Power Clamp Temp', DeviceID='temp', Unit=10, Type=80, Subtype=5, Used=1).Create()
 			options = {}
 			options['Custom'] = '1;Hz'
-			Domoticz.Unit(Name='Frequency', DeviceID='freq', Unit=11, Type=243, Subtype=31, Options=options, Used=1).Create()
+			Domoticz.Device(Name='Frequency', DeviceID='freq', Unit=11, Type=243, Subtype=31, Options=options, Used=1).Create()
 			
 		localkey = get_key()
 		if localkey != "":
@@ -435,12 +451,14 @@ def createDevice(ID, Unit):
 #	return
 
 def UpdateDevice(ID, Unit, sValue):
-	# Make sure that the Domoticz device still exists (they can be deleted) before updating it
-	if (ID in Devices):
-		Devices[ID].Units[Unit].nValue = 0
-		Devices[ID].Units[Unit].sValue = sValue
-		Devices[ID].Units[Unit].Update(Log=True)
-	return
+    # Make sure that the Domoticz device still exists (they can be deleted) before updating it 
+	nValue = 0
+	TimedOut = 0
+    if (Unit in Devices):
+        if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
+            Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
+            Domoticz.Log("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
+    return
 
 # Generic helper functions
 def DumpConfigToLog():
