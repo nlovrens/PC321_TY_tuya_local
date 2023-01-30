@@ -437,9 +437,9 @@ def createDevice(ID, Unit):
 def UpdateDevice(ID, Unit, sValue):
 	# Make sure that the Domoticz device still exists (they can be deleted) before updating it
 	if (ID in Devices):
-		Devices[ID].Unit[Unit].nValue = 0
-		Devices[ID].Unit[Unit].sValue = sValue
-		Devices[ID].Unit[Unit].Update(Log=True)
+		Devices[ID].Units[Unit].nValue = 0
+		Devices[ID].Units[Unit].sValue = sValue
+		Devices[ID].Units[Unit].Update(Log=True)
 	return
 
 # Generic helper functions
