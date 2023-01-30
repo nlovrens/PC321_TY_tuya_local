@@ -419,19 +419,29 @@ def createDevice(ID, Unit):
 		value = True
 	return value
 	
-def UpdateDevice(ID, Unit, sValue):
-	if ID in Devices:
-		if str(Devices[ID].Units[Unit].sValue) != str(sValue):
-			Devices[ID].Units[Unit].sValue = str(sValue)
-			if type(sValue) == int or type(sValue) == float:
-				Devices[ID].Units[Unit].LastLevel = sValue
-			elif type(sValue) == dict:
-				Devices[ID].Units[Unit].Color = json.dumps(sValue)
-			Devices[ID].Units[Unit].nValue = 0
-			Devices[ID].TimedOut = 0
-			Devices[ID].Units[Unit].Update(Log=True)
+#def UpdateDevice(ID, Unit, sValue):
+#	if ID in Devices:
+#		if str(Devices[ID].Units[Unit].sValue) != str(sValue):
+#			Devices[ID].Units[Unit].sValue = str(sValue)
+#			if type(sValue) == int or type(sValue) == float:
+#				Devices[ID].Units[Unit].LastLevel = sValue
+#			elif type(sValue) == dict:
+#				Devices[ID].Units[Unit].Color = json.dumps(sValue)
+#			Devices[ID].Units[Unit].nValue = 0
+#			Devices[ID].TimedOut = 0
+#			Devices[ID].Units[Unit].Update(Log=True)
+#
+#			Domoticz.Debug('Update device value:' + str(ID) + ' Unit: ' + str(Unit) + ' sValue: ' +  str(sValue))
+#	return
 
-			Domoticz.Debug('Update device value:' + str(ID) + ' Unit: ' + str(Unit) + ' sValue: ' +  str(sValue))
+def UpdateDevice(ID, Unit, sValue):
+	# Make sure that the Domoticz device still exists (they can be deleted) before updating it
+	nValue = 0
+	TimedOut = 0
+	if (Unit in Devices):
+		if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
+			Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
+			Domoticz.Debug("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
 	return
 
 # Generic helper functions
