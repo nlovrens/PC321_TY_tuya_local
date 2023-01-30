@@ -454,11 +454,11 @@ def UpdateDevice(ID, Unit, sValue):
     # Make sure that the Domoticz device still exists (they can be deleted) before updating it 
 	nValue = 0
 	TimedOut = 0
-    if (Unit in Devices):
-        if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
-            Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
-            Domoticz.Log("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
-    return
+	if (Unit in Devices):
+		if (Devices[Unit].nValue != nValue) or (Devices[Unit].sValue != sValue) or (Devices[Unit].TimedOut != TimedOut):
+			Devices[Unit].Update(nValue=nValue, sValue=str(sValue), TimedOut=TimedOut)
+			Domoticz.Log("Update "+str(nValue)+":'"+str(sValue)+"' ("+Devices[Unit].Name+")")
+	return
 
 # Generic helper functions
 def DumpConfigToLog():
