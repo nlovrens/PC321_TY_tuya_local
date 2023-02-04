@@ -126,6 +126,7 @@ class BasePlugin:
 		last_powerC = 0
 		last_temp = 0
 		last_freq = 0
+		isConnected = False
 		energy = ''
 		energyA = ''
 		energyB = ''
@@ -201,6 +202,8 @@ class BasePlugin:
 					connected = True
 					key_mgmt(status)
 					self.TuyaThread.start()
+				else:
+					connected = False
 		return connected
 
 		
