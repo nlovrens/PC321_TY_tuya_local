@@ -192,6 +192,7 @@ class BasePlugin:
 			payload = tuya.generate_payload(tinytuya.DP_QUERY)
 			tuya.send(payload)
 			status = tuya.status()
+			connected = False
 			if status.get('Error') is not None:
 				Domoticz.Error("PC321-TY Error: " + str(status.get('Error')))
 				connected = False
