@@ -296,6 +296,8 @@ def get_key():
 			apiSecret=Parameters['Password'], 
 			apiDeviceID=Parameters['Mode2'])
 		devices = c.getdevices()
+		if devices.get('Error') is not None:
+				Domoticz.Error("Tuya Cloud Error: " + str(devices.get('Error')))
 		i = 0
 		for dev in devices:
 			if devices[i]['id'] == Parameters['Mode2']:
