@@ -184,6 +184,7 @@ class BasePlugin:
 						
 	def localConnect(self):
 		global tuya
+		connected = False
 		if localkey != "":
 			Domoticz.Status("Connecting to device...")
 			tuya = tinytuya.OutletDevice(Parameters['Mode2'], Parameters['Mode4'], localkey)
@@ -192,7 +193,6 @@ class BasePlugin:
 			payload = tuya.generate_payload(tinytuya.DP_QUERY)
 			tuya.send(payload)
 			status = tuya.status()
-			connected = False
 			if status.get('Error') is not None:
 				Domoticz.Error("PC321-TY Error: " + str(status.get('Error')))
 				connected = False
