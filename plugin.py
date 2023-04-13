@@ -289,7 +289,7 @@ def onHeartbeat():
 
 def get_key():
 	localkey = ""
-	if Parameters['Mode3'] is None:
+	if Parameters['Mode3'] == "":
 		try:
 			Domoticz.Status('Connecting to Tuya cloud...')
 			c = tinytuya.Cloud(
