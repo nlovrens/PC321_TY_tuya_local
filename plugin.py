@@ -44,9 +44,10 @@
 				<option label="CN" value="cn"/>
 			</options>
 		</param>
-		<param field="Username" label="apiKey" width="300px" required="true" default=""/>
-		<param field="Password" label="apiSecret" width="300px" required="true" default="" password="true"/>
+		<param field="Username" label="apiKey" width="300px" required="false" default=""/>
+		<param field="Password" label="apiSecret" width="300px" required="false" default="" password="true"/>
 		<param field="Mode2" label="DeviceID" width="300px" required="true" />
+		<param field="Mode3" label="Device Local Key" width="300px" required="false" />
 		<param field="Mode4" label="DeviceIP" width="300px" required="true" />
 		<param field="Mode6" label="Debug" width="150px">
 			<options>
@@ -288,24 +289,27 @@ def onHeartbeat():
 
 def get_key():
 	localkey = ""
-	try:
-		Domoticz.Status('Connecting to Tuya cloud...')
-		c = tinytuya.Cloud(
-			apiRegion=Parameters['Mode1'], 
-			apiKey=Parameters['Username'], 
-			apiSecret=Parameters['Password'], 
-			apiDeviceID=Parameters['Mode2'])
-		devices = c.getdevices()
-		if devices.get('Error') is not None:
-				Domoticz.Error("Tuya Cloud Error: " + str(devices.get('Payload')))
-		i = 0
-		for dev in devices:
-			if devices[i]['id'] == Parameters['Mode2']:
-				Domoticz.Status('Got PC321-TY local key: ' + devices[i]['key'])
-				localkey = devices[i]['key']
-			i=i+1
-	except:
-		Domoticz.Error('Error connecting to Tuya cloud, check credentials')
+	if Parameters['Mode2'] is None:
+		try:
+			Domoticz.Status('Connecting to Tuya cloud...')
+			c = tinytuya.Cloud(
+				apiRegion=Parameters['Mode1'], 
+				apiKey=Parameters['Username'], 
+				apiSecret=Parameters['Password'], 
+				apiDeviceID=Parameters['Mode2'])
+			devices = c.getdevices()
+			if devices.get('Error') is not None:
+					Domoticz.Error("Tuya Cloud Error: " + str(devices.get('Payload')))
+			i = 0
+			for dev in devices:
+				if devices[i]['id'] == Parameters['Mode2']:
+					Domoticz.Status('Got PC321-TY local key: ' + devices[i]['key'])
+					localkey = devices[i]['key']
+				i=i+1
+		except:
+			Domoticz.Error('Error connecting to Tuya cloud, check credentials')
+	else:
+		localkey = Parameters['Mode2']
 	return localkey
 
 
